@@ -1,3 +1,35 @@
-CalibreMenu is a companion command line tool for the main Calibre application. It allows you to easily Add, Delete and Search for ebooks in a headless Calibre setup.
+PURPOSE:
 
-Good for Raspberry Pi setup where you are managing your Calibre library via SSH (i.e. no gui is RPI will die with that).
+CalibreMenu is a command line tool for the main Calibre application. It allows you to easily Add, Delete and Search for ebooks in a headless Calibre setup. Once installed you can type "cmenu" into a command line window and you will get menu that looks like this:
+
+---------------------------
+	CalibreDB Menu
+---------------------------
+1. Add Book(s)
+2. Remove book
+3. Search library
+4. Exit
+
+This is good for a Raspberry Pi setup where you are managing your Calibre library via SSH (i.e. no gui, an RPI will die with that).
+
+HOW TO:
+
+Pre-requisites:
+
+1. Make sure you have Calibre installed on your Raspberry Pi (or whichever OS).
+2. On a RPI you can install Calibre via: sudo apt-get update && sudo apt-get install calibre
+3. Using a terminal command line, load the calibre content server (headless Calibre). E.g. sudo calibre-server --with-library "../calibre-library/" --password ProvideAPassword --daemonize
+4. Note that i am not going into the details of actually building the library or exactly how to set up Calibre. I am presuming that by this point you have a working Calibre Content Server.
+
+Install CalibreMenu:
+
+1. Download the CM repository to your RPI (or whichever machine).
+2. Unzip or open the downloaded folder, navigate to package/bin.
+3. Open calibremenu.py. Two lines need to be amended.
+4. Amend path_to_books so that it points to a directory where your source ebooks are saved. E.g. create a directory somewhere and add that path to path_to_books. You will then put any ebooks into the new directory, CM will recurse through the folder and add any books in the directory to your Calibre Library.
+5. Amend path_to_library with the path to your Calibre library. This depends on what path you specified for the "--with-library" switch when starting the Calibre Content Server (see pre-requisites section).
+6. Save and get ready to build.
+7. CD to the CM directory you downloaded and type: python setup.py sdist
+8. Python will build an installer tarball in a directory called /dist. CD to /dist and untar: tar xzf CalibreMenu-1.0.0.tar.gz
+9. CD to the extracted directory. Now install by typing: sudo python setup.py install
+10. Once successfully installed you will be able to type "cmenu" from anywhere in a command line window. This will give you a menu which will allow you to ADD books, DELETE books and SEARCH books.
