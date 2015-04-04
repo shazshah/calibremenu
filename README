@@ -1,0 +1,3 @@
+CalibreMenu is a companion command line tool for the main Calibre application. It allows you to easily Add, Delete and Search for ebooks in a headless Calibre setup.
+
+Good for Raspberry Pi setup where you are managing your Calibre library via SSH (i.e. no gui is RPI will die with that).

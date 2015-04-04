@@ -1,0 +1,6 @@
+#!/usr/bin/python
+
+##This script allows a user to run calibremenu from command line by calling the script name (cmenu) from anywhere
+from package.bin import calibremenu
+
+calibremenu.calibremenu ()
